@@ -199,6 +199,7 @@ export default function AutoPlayProjectDashboard() {
       status: "completed" as ProjectStatus,
     },
   ]);
+  const projectNames = projects.map((project) => project.name);
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch =
@@ -465,7 +466,7 @@ export default function AutoPlayProjectDashboard() {
               Projects
             </h1>
             <div className="flex items-center gap-3">
-              <DropdownMenu>
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="outline"
@@ -486,6 +487,38 @@ export default function AutoPlayProjectDashboard() {
                   >
                     Production App
                   </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu> */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="gap-2 bg-transparent text-xs sm:text-sm"
+                  >
+                    {selectedProject}
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuItem
+                    onClick={() => setSelectedProject("All Projects")}
+                  >
+                    All Projects
+                  </DropdownMenuItem>
+
+                  <DropdownMenuSeparator />
+
+                  {projectNames.map((name) => (
+                    <DropdownMenuItem
+                      key={name}
+                      onClick={() => setSelectedProject(name)}
+                      className={
+                        selectedProject === name ? "font-bold bg-muted" : ""
+                      }
+                    >
+                      {name}
+                    </DropdownMenuItem>
+                  ))}
                 </DropdownMenuContent>
               </DropdownMenu>
               <Button className="gap-2" onClick={() => setAddProjectOpen(true)}>
