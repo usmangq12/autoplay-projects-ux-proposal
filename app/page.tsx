@@ -495,6 +495,32 @@ export default function AutoPlayProjectDashboard() {
             </div>
           </div>
 
+          <div className="flex items-center gap-3">
+            <Input
+              placeholder="Search projects by name or description..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="max-w-md"
+            />
+            <Tabs
+              value={statusFilter}
+              onValueChange={(v) => {
+                setStatusFilter(v as typeof statusFilter);
+                setCurrentPage(1);
+              }}
+            >
+              <TabsList>
+                <TabsTrigger value="all">All Projects</TabsTrigger>
+                <TabsTrigger value="pending">Pending</TabsTrigger>
+                <TabsTrigger value="completed">Completed</TabsTrigger>
+                <TabsTrigger value="failed">Failed</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
+
           {/* Projects Table */}
           <Card>
             <CardHeader>
