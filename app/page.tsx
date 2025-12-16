@@ -737,7 +737,7 @@ export default function AutoPlayProjectDashboard() {
 
         {/* Integration/Dashboard Modal */}
         <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-          <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto">
+          <DialogContent className="max-w-4xl">
             {modalProjectData && (
               <>
                 <DialogHeader>
@@ -1104,7 +1104,7 @@ export default function AutoPlayProjectDashboard() {
                         ))}
                       </div>
 
-                      <div className="min-h-screen flex  justify-center bg-background px-4">
+                      <div className="flex  justify-center bg-background px-4">
                         <div className="text-center max-w-md">
                           {/* Success Icon */}
                           <div className="mb-8 flex justify-center">
